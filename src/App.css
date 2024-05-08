@@ -1,38 +1,191 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pageHeaderContainer{
+  display:flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-around;
+  width:50%;
+  margin-bottom:2%;
+  margin-top:2%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input-field-container{
+  width:80%;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  padding-left: 1%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input-field{
+  outline: none !important;
+  border:none !important;
+  width:90%;
+  height:100%;
+}
+.fa-sort{
+ font-weight: 500;
+  font-size: 18px;
+  padding-top: 0.5rem;
+}
+.fa-sort:hover{
+  cursor: pointer;
+}
+.listitemContainer{
   display: flex;
   flex-direction: column;
+}
+.listContainer{
+  margin: auto;
+  width: 50%;
+}
+
+.listItem{
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+}
+.itemCard {
+    background: inherit;
+    display: flex;
+    justify-content: space-between;
+    width:90%;
+    border-radius: 0.5rem;
+    padding-left:5%;
+    padding-right:2%;
+    background-color: white;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+    padding-bottom:0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.itemCard:hover{
+  cursor: pointer;
+}
+.close-button {
+  position: inherit;
+  border: none;
+  font-size: 18px;
+  font-weight: 1000;
+  background: none;
+  cursor: pointer;
+  color: red;
+}
+.item-name-country{
+  color: #C0C0C0	;
+  font-size: 10px;
+}
+.detail-link{
+  font-size: 10px;
+  color:green;
+}
+
+/* Details page */
+.listDetails{
+  width:50%; 
+  margin:0 auto;
+  height:50%;
+  margin-top:10%;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.page-title-details{
+  padding-top:1rem;
+  text-align: center !important;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+/* Animation Logics */
+.effect-container {
+  position: relative;
+  overflow: hidden;
+  --effect-name: ripple;
+  --effect-duration: 500ms;
+  --effect-top: 0;
+  --effect-left: 0;
+  --effect-height: 100px;
+  --effect-width: 100px;
+  --effect-color: "fff";
 }
 
-@keyframes App-logo-spin {
+.effect-container::before {
+  content: "";
+  position: absolute;
+  opacity: 0.3;
+  top: var(--effect-top);
+  left: var(--effect-left);
+  height: var(--effect-height);
+  width: var(--effect-width);
+  background: var(--effect-color);
+}
+
+.effect-container.ripple.active::before {
+  border-radius: 50%;
+  animation: ripple var(--effect-duration) linear forwards;
+}
+
+@keyframes ripple {
   from {
-    transform: rotate(0deg);
+    transform: scale(0);
   }
+
   to {
-    transform: rotate(360deg);
+    transform: scale(6);
+    opacity: 0;
   }
+}
+
+.effect-container.square-rotate.active::before {
+  animation: square-rotate var(--effect-duration) linear forwards;
+}
+
+@keyframes square-rotate {
+  from {
+    transform: scale(0) rotate(0);
+  }
+
+  to {
+    transform: scale(6) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+
+/* Loader */
+.loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: solid #3498db;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
