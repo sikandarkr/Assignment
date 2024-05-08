@@ -9,7 +9,6 @@ export default function listReducer(state = initialState, action) {
     case "REQUESTLIST":
       return { ...action.data, loading: true };
     case "SUCCESSLIST":
-      console.log("Reducer Data...", action.data);
       return {
         // returning a copy of orignal state
         ...state, //copying the original state

@@ -6,7 +6,6 @@ export const apiRequest = () => {
   };
 };
 export const fetchData = data => {
-    console.log("Data......",data);
   return {
     type: "SUCCESSLIST",
     data:data
@@ -45,9 +44,13 @@ export const fetchList = () => {
     return axios
       .get(apiUrl)
       .then(response => {
+        localStorage.setItem('list', JSON.stringify(response.data));
         dispatch(fetchData(response.data));
       })
       .catch(error => {
+        //if api call fails we will dispatch localstorage data
+        const persistData = JSON.parse(localStorage.getItem('list'));
+        dispatch(fetchData(persistData));
         throw error;
       });
   };

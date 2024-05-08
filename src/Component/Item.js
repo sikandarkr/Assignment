@@ -1,8 +1,8 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, {useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useClickAnimation } from "./useClickAnimation";
-import { fetchList ,removeItem} from "../Redux/action/getList";
+import {removeItem} from "../Redux/action/getList";
 const Item = (props) => {
   const {name, country,item,key} = props;
   const cardRef = useRef();
@@ -29,7 +29,7 @@ const removeHandler =() =>{
         <small className="item-name-country">{country}</small>
         <small className="detail-link"  onClick={()=>Redirecthandler(item)}>Go to details</small>
     </div>
-     <button class="close-button" data-close  onClick={()=>removeHandler(item)}  ref={cardRef}>X</button>
+     <button class="close-button"   onClick={()=>removeHandler(item)}  ref={cardRef}>X</button>
   </div>
   );
 };
